@@ -25,16 +25,21 @@
       </plugin>
     </plugins>
   </build>
-   <distributionManagement>
+   <properties>
+          <sonar.host.url>http://35.175.195.81:9000</sonar.host.url>
+          <sonar.login>admin</sonar.login>
+          <sonar.password>admin</sonar.password>
+ </properties>
+  <distributionManagement>
         <repository>
-            <id>deployment</id>
-            <name>Internal Releases</name>
-            <url>http://10.128.0.10:8081/repository/student-rel/</url>
-        </repository>
+            <id>nexus</id>
+            <name>uday Releases</name>
+            <url>http://3.86.87.53:8081/repository/uday-release/</url>
+   </repository>
         <snapshotRepository>
-            <id>deployment</id>
-            <name>Internal Snapshot Releases</name>
-            <url>http://10.128.0.10:8081/repository/student-snap/</url>
+             <id>nexus</id>
+            <name>uday Snapshot Releases</name>
+            <url>http://3.86.87.53:8081/repository/uday-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
   <dependencies>
