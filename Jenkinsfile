@@ -6,7 +6,8 @@ tools{
 maven "maven"
 
 }
-  environment {
+  /*
+	environment {
         DOCKER_IMAGE_NAME = 'uday-ecr-repo:latest'  // Specify the name and tag of your Docker image
         ECR_REPOSITORY = 'uday-ecr-repo'  // Specify the name of your ECR repository
         AWS_REGION = 'us-east-1'  // Specify the AWS region where your ECR repository is located
@@ -15,7 +16,6 @@ maven "maven"
 	AWS_ACCESS_KEY_ID = ''
         AWS_SECRET_ACCESS_KEY = ''
     }
-/*
 triggers{
 pollSCM('* * * * *')
 }
@@ -67,7 +67,6 @@ stages{
     sh 'docker run -itd -p 89:8080 --name cont1 image1'
   }
 }
- */
 stage('Build and Push Docker Image') {
           steps {
                 //withAWS(credentials: awsCredentials(AWS_CREDENTIALS_ID), region: AWS_REGION) {
@@ -96,4 +95,17 @@ stage('Build and Push Docker Image') {
                 }
             }
         }
+	*/
+	stage('Deploy') {
+		steps {
+			script {
+				docker.withRegistry(
+					'https://327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo'
+					'ecr:us-east-1:aws-credentials') {
+					def myImage = docker.build('uday-ecr-repo')
+					myImage.push('latest')
+				}
+			}
+		}
+	}
 }
