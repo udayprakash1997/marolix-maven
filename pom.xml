@@ -29,6 +29,7 @@
           <sonar.host.url>http://34.229.90.46:9000</sonar.host.url>
           <sonar.login>admin</sonar.login>
           <sonar.password>uday</sonar.password>
+          <sonar.java.binaries>target/classes</sonar.java.binaries>
  </properties>
   <distributionManagement>
         <repository>
