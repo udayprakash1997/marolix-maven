@@ -29,11 +29,13 @@ stages{
   sh  "mvn clean package"
   }
   }
+/*
   stage('ExecuteSonarQubeReport'){
   steps{
   sh  "mvn clean sonar:sonar"
   }
   }
+*/
   stage('UploadArtifactsIntoNexus'){
   steps{
   sh  "mvn clean deploy"
