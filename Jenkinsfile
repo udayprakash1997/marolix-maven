@@ -96,6 +96,7 @@ stage('Build and Push Docker Image') {
             }
         }
 	*/
+	/*
 	stage('Deploy') {
 		steps {
 			script {
@@ -109,5 +110,17 @@ stage('Build and Push Docker Image') {
 			}
 		}
 	}
+	*/
+	stage('deploy') {
+		steps {
+			script {
+				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327575778641.dkr.ecr.us-east-1.amazonaws.com'
+				sh 'docker build -t uday-ecr-repo .'
+				sh 'docker tag uday-ecr-repo:latest 327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo:latest'
+				sh 'docker push 327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo:latest'
+			}
+		}
+	}
 }
+				
 }
