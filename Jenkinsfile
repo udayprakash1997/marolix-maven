@@ -10,8 +10,10 @@ maven "maven"
         DOCKER_IMAGE_NAME = 'uday-ecr-repo:latest'  // Specify the name and tag of your Docker image
         ECR_REPOSITORY = 'uday-ecr-repo'  // Specify the name of your ECR repository
         AWS_REGION = 'us-east-1'  // Specify the AWS region where your ECR repository is located
-        AWS_CREDENTIALS_ID = 'aws-credentials'  // Specify the ID of your AWS credentials stored in Jenkins
+       // AWS_CREDENTIALS_ID = 'aws-credentials'  // Specify the ID of your AWS credentials stored in Jenkins
 	AWS_ACCOUNT_ID = '327575778641'
+	AWS_ACCESS_KEY_ID = credentials('aws-credentials').accessKeyId
+        AWS_SECRET_ACCESS_KEY = credentials('aws-credentials').secretKey
     }
 triggers{
 pollSCM('* * * * *')
@@ -67,8 +69,12 @@ stages{
  */
 stage('Build and Push Docker Image') {
           steps {
-                withAWS(credentials: awsCredentials(AWS_CREDENTIALS_ID), region: AWS_REGION) {
-                    script {
+                //withAWS(credentials: awsCredentials(AWS_CREDENTIALS_ID), region: AWS_REGION) {
+                    withCredentials([
+                    string(credentialsId: 'aws-credentials', variable: 'AWS_ACCESS_KEY_ID'),
+                    string(credentialsId: 'aws-credentials', variable: 'AWS_SECRET_ACCESS_KEY')
+                ]) 
+		  script {
                         // Build the Docker image
                         sh "docker build -t ${DOCKER_IMAGE_NAME} ."
                         
