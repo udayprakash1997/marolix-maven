@@ -39,7 +39,7 @@
         <snapshotRepository>
              <id>nexus</id>
             <name>uday Snapshot Releases</name>
-            <url>http://3.86.87.53:8081/repository/uday-snapshot/</url>
+            <url>http://34.207.90.182:8081/repository/uday-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
   <dependencies>
