@@ -29,11 +29,14 @@ stages{
   sh  "mvn clean package"
   }
   }
-  stage('ExecuteSonarQubeReport'){
-  steps{
-  sh  "mvn clean sonar:sonar"
-  }
-  }
+  stage('SONARANALYSIS'){
+	    steps{
+	         withSonarQubeEnv('sonarserver'){
+	           sh "mvn sonar:sonar"
+	         }
+	       }
+	    }
+
   stage('UploadArtifactsIntoNexus'){
   steps{
   sh  "mvn clean deploy"
