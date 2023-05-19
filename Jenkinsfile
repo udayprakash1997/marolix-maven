@@ -12,8 +12,8 @@ maven "maven"
         AWS_REGION = 'us-east-1'  // Specify the AWS region where your ECR repository is located
        // AWS_CREDENTIALS_ID = 'aws-credentials'  // Specify the ID of your AWS credentials stored in Jenkins
 	AWS_ACCOUNT_ID = '327575778641'
-	AWS_ACCESS_KEY_ID = credentials('aws-credentials').accessKeyId
-        AWS_SECRET_ACCESS_KEY = credentials('aws-credentials').secretKey
+	AWS_ACCESS_KEY_ID = ''
+        AWS_SECRET_ACCESS_KEY = ''
     }
 /*
 triggers{
@@ -77,9 +77,10 @@ stage('Build and Push Docker Image') {
                 ]) 
 		  script {
                          // Assign the values to environment variables
-                        env.AWS_ACCESS_KEY_ID = sh(script: 'echo $AWS_ACCESS_KEY_ID', returnStdout: true).trim()
-                        env.AWS_SECRET_ACCESS_KEY = sh(script: 'echo $AWS_SECRET_ACCESS_KEY', returnStdout: true).trim()
-                        
+                        //env.AWS_ACCESS_KEY_ID = sh(script: 'echo $AWS_ACCESS_KEY_ID', returnStdout: true).trim()
+                        //env.AWS_SECRET_ACCESS_KEY = sh(script: 'echo $AWS_SECRET_ACCESS_KEY', returnStdout: true).trim()
+                        AWS_ACCESS_KEY_ID = credentials('aws-credentials').accessKeyId
+                        AWS_SECRET_ACCESS_KEY = credentials('aws-credentials').secretKey
 			  // Build the Docker image
                         sh "docker build -t ${DOCKER_IMAGE_NAME} ."
                         
