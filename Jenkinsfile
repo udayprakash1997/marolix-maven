@@ -12,8 +12,8 @@ maven "maven"
         AWS_REGION = 'us-east-1'  // Specify the AWS region where your ECR repository is located
        // AWS_CREDENTIALS_ID = 'aws-credentials'  // Specify the ID of your AWS credentials stored in Jenkins
 	AWS_ACCOUNT_ID = '327575778641'
-	AWS_ACCESS_KEY_ID = ''
-        AWS_SECRET_ACCESS_KEY = ''
+	AWS_ACCESS_KEY_ID = credentials('aws-credentials').accessKeyId
+        AWS_SECRET_ACCESS_KEY = credentials('aws-credentials').secretKey
     }
 /*
 triggers{
