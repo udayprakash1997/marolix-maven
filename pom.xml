@@ -26,7 +26,7 @@
     </plugins>
   </build>
    <properties>
-          <sonar.host.url>http://54.196.174.82:9000</sonar.host.url>
+          <sonar.host.url>http://34.229.90.46:9000</sonar.host.url>
           <sonar.login>admin</sonar.login>
           <sonar.password>admin</sonar.password>
  </properties>
