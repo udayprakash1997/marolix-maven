@@ -15,6 +15,7 @@ maven "maven"
 	AWS_ACCESS_KEY_ID = ''
         AWS_SECRET_ACCESS_KEY = ''
     }
+/*
 triggers{
 pollSCM('* * * * *')
 }
@@ -23,7 +24,7 @@ options{
 timestamps()
 buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
 }
-
+*/
 stages{
 
   stage('CheckOutCode'){
