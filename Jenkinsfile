@@ -99,6 +99,7 @@ stage('Build and Push Docker Image') {
 	stage('Deploy') {
 		steps {
 			script {
+				sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327575778641.dkr.ecr.us-east-1.amazonaws.com'
 				docker.withRegistry(
 					'https://327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo',
 					'ecr:us-east-1:aws-credentials') {
