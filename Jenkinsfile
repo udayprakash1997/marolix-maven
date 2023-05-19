@@ -100,7 +100,7 @@ stage('Build and Push Docker Image') {
 		steps {
 			script {
 				docker.withRegistry(
-					'https://327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo'
+					'https://327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo',
 					'ecr:us-east-1:aws-credentials') {
 					def myImage = docker.build('uday-ecr-repo')
 					myImage.push('latest')
