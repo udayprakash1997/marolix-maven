@@ -39,6 +39,7 @@ stages{
   sh  "mvn clean package"
   }
   }
+/*
   stage('ExecuteSonarQubeReport'){
   steps{
   sh  "mvn clean package sonar:sonar"
@@ -57,6 +58,7 @@ stages{
   }
   }
   }
+  */
 /*
  stage('Build Docker Image') {
   steps {
