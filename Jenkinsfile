@@ -133,7 +133,7 @@ stage('Build and Push Docker Image') {
 	 stage('build') {
 	       steps {
 	         script  {
-	            dockerImage =docker.build(imagename, "/docker/")
+	            dockerImage =docker.build(imagename)
 	         }
 	       }
 	  }
