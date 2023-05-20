@@ -10,7 +10,7 @@ maven "maven"
 	environment {
 	credentials = 'ecr:us-east-1:aws-credentials'
 	url = "https://327575778641.dkr.ecr.us-east-1.amazonaws.com"
-	imagename = "https://327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo:latest /docker/"
+	imagename = "https://327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo:latest"
         //DOCKER_IMAGE_NAME = 'uday-ecr-repo:latest'  // Specify the name and tag of your Docker image
         //ECR_REPOSITORY = 'uday-ecr-repo'  // Specify the name of your ECR repository
         //AWS_REGION = 'us-east-1'  // Specify the AWS region where your ECR repository is located
