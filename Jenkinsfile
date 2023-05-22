@@ -130,7 +130,7 @@ stage('Build and Push Docker Image') {
 			}
 		}
 	}
-	/*
+	*/
 	 stage('build docker image') {
 	       steps {
 	         script  {
