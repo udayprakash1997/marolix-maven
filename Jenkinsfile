@@ -6,7 +6,7 @@ tools{
 maven "maven"
 
 }
- 
+/* 
 	environment {
 	credentials = 'ecr:us-east-1:aws-credentials'
 	url = "https://327575778641.dkr.ecr.us-east-1.amazonaws.com"
@@ -19,7 +19,7 @@ maven "maven"
 	//AWS_ACCESS_KEY_ID = ''
         //AWS_SECRET_ACCESS_KEY = ''
     }
-/*
+
 triggers{
 pollSCM('* * * * *')
 }
@@ -42,7 +42,7 @@ stages{
   sh  "mvn clean package"
   }
   }
-/*
+
   stage('ExecuteSonarQubeReport'){
   steps{
   sh  "mvn clean package sonar:sonar"
@@ -61,20 +61,20 @@ stages{
   }
   }
   }
-  */
+  
 
  stage('Build Docker Image') {
   steps {
     sh 'docker build -t image1 .'
   }
 }
-/*
+
  stage('Run Docker Container') {
   steps {
     sh 'docker run -itd -p 89:8080 --name cont1 image1'
   }
 }
-*/
+
 /*	
 stage('Build and Push Docker Image') {
           steps {
@@ -130,7 +130,7 @@ stage('Build and Push Docker Image') {
 			}
 		}
 	}
-	*/
+	
 	 stage('build') {
 	       steps {
 	         script  {
@@ -149,6 +149,7 @@ stage('Build and Push Docker Image') {
 
 	    }
 	  }
+	  */
 }
 				
 }
