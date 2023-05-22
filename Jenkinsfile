@@ -65,13 +65,13 @@ stages{
 
  stage('Build Docker Image') {
   steps {
-    sh 'docker build -t image1 .'
+    sh 'docker build -t image2 .'
   }
 }
 
  stage('Run Docker Container') {
   steps {
-    sh 'docker run -itd -p 89:8080 --name cont1 image1'
+    sh 'docker run -itd -p 89:8080 --name cont2 image2'
   }
 }
 
