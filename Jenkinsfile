@@ -62,13 +62,13 @@ stages{
   }
   }
   
-
+/*
  stage('Build Docker Image') {
   steps {
-    sh 'docker build -t 327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo .'
+    sh 'docker build -t imagename .'
   }
 }
-/*
+
  stage('Run Docker Container') {
   steps {
     sh 'docker run -itd -p 89:8080 --name cont2 image2'
@@ -130,15 +130,15 @@ stage('Build and Push Docker Image') {
 			}
 		}
 	}
-	
+	/*
 	 stage('build docker image') {
 	       steps {
 	         script  {
-	            dockerImage =docker.build(imagename .)
+	            dockerImage =docker.build(imagename)
 	         }
 	       }
-	  }
-	  */
+	 }
+	  
 	    stage('upload to ecr') {
 	    steps {
 	        script {
