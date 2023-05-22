@@ -6,7 +6,7 @@ tools{
 maven "maven"
 
 }
-/* 
+/*
 	environment {
 	credentials = 'ecr:us-east-1:aws-credentials'
 	url = "https://327575778641.dkr.ecr.us-east-1.amazonaws.com"
@@ -149,7 +149,7 @@ stage('Build and Push Docker Image') {
 
 	    }
 	  }
-	  */
+	*/  
 }
 				
 }
