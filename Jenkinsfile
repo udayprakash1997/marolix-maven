@@ -13,13 +13,6 @@ maven "maven"
 	imagename = "327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo"
 	cluster = "udayecs"
         service = "udayservice"
-        //DOCKER_IMAGE_NAME = 'uday-ecr-repo:latest'  // Specify the name and tag of your Docker image
-        //ECR_REPOSITORY = 'uday-ecr-repo'  // Specify the name of your ECR repository
-        //AWS_REGION = 'us-east-1'  // Specify the AWS region where your ECR repository is located
-        //AWS_CREDENTIALS_ID = 'aws-credentials'  // Specify the ID of your AWS credentials stored in Jenkins
-	//AWS_ACCOUNT_ID = '327575778641'
-	//AWS_ACCESS_KEY_ID = ''
-        //AWS_SECRET_ACCESS_KEY = ''
     }
 /*
 triggers{
@@ -77,62 +70,7 @@ stages{
   }
 }
 */
-/*	
-stage('Build and Push Docker Image') {
-          steps {
-                withAWS(credentials: awsCredentials(AWS_CREDENTIALS_ID), region: AWS_REGION) {
-                    //withCredentials([
-                    //string(credentialsId: 'aws-credentials', variable: 'AWS_ACCESS_KEY_ID'),
-                  //  string(credentialsId: 'aws-credentials', variable: 'AWS_SECRET_ACCESS_KEY')
-                //]) 
-		  script {
-                         // Assign the values to environment variables
-                        //env.AWS_ACCESS_KEY_ID = sh(script: 'echo $AWS_ACCESS_KEY_ID', returnStdout: true).trim()
-                        //env.AWS_SECRET_ACCESS_KEY = sh(script: 'echo $AWS_SECRET_ACCESS_KEY', returnStdout: true).trim()
-                        //AWS_ACCESS_KEY_ID = credentials('aws-credentials').accessKeyId
-                        //AWS_SECRET_ACCESS_KEY = credentials('aws-credentials').secretKey
-			  // Build the Docker image
-                        sh "docker build -t ${DOCKER_IMAGE_NAME} ."
-                        
-                        // Authenticate with ECR
-                        sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-                        
-                        // Tag the Docker image with ECR repository URI
-                        sh "docker tag ${DOCKER_IMAGE_NAME} ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${BUILD_NUMBER}"
-                        
-                        // Push the Docker image to ECR
-                        sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY}:${BUILD_NUMBER}"
-                    }
-                }
-            }
-        }
-	
-	
-	stage('Deploy') {
-		steps {
-			script {
-				//sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327575778641.dkr.ecr.us-east-1.amazonaws.com'
-				docker.withRegistry(
-					'https://327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo',
-					'ecr:us-east-1:aws-credentials') {
-					def myImage = docker.build('uday-ecr-repo')
-					myImage.push('latest')
-				}
-			}
-		}
-	}
-	
-	stage('deploy') {
-		steps {
-			script {
-				//sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 327575778641.dkr.ecr.us-east-1.amazonaws.com'
-				sh 'docker build -t uday-ecr-repo .'
-				sh 'docker tag uday-ecr-repo:latest 327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo:latest'
-				sh 'docker push 327575778641.dkr.ecr.us-east-1.amazonaws.com/uday-ecr-repo:latest'
-			}
-		}
-	}
-	*/
+
 	 stage('build docker image') {
 	       steps {
 	         script  {
