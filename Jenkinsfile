@@ -6,7 +6,7 @@ tools{
 maven "maven"
 
 }
-
+/*
 	environment {
 	credentials = 'ecr:us-east-1:aws-credentials'
 	url = "https://327575778641.dkr.ecr.us-east-1.amazonaws.com"
@@ -14,7 +14,7 @@ maven "maven"
 	cluster = "udayecs"
         service = "udayservice"
     }
-/*
+
 triggers{
 pollSCM('* * * * *')
 }
@@ -28,7 +28,7 @@ stages{
 
   stage('CheckOutCode'){
     steps{
-    git 'https://github.com/udayprakash1997/marolix-maven.git'
+    git 'git 'https://github.com/udayprakash1997/vprofile-project-marolix.git''
 	}
   }
   
@@ -49,6 +49,7 @@ stages{
   sh  "mvn clean deploy"
   }
   }
+/*
   stage('DeployAppIntoTomcat'){
   steps{
   sshagent(['f69ee4f7-2422-4062-bff8-0f6445bdbf1f']) {
@@ -56,7 +57,7 @@ stages{
   }
   }
   }
-  
+  */
 /*
  stage('Build Docker Image') {
   steps {
@@ -78,7 +79,7 @@ stages{
 	         }
 	       }
 	 }
-	  
+/*	  
 	    stage('upload to ecr') {
 	    steps {
 	        script {
@@ -97,7 +98,7 @@ stages{
         }
       }
      }
- 
+ */
 }
 				
 }
